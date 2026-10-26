@@ -6,7 +6,6 @@ import Marquees from "@/components/Marquees";
 import About from "@/components/About";
 import Services from "@/components/Services";
 import Work from "@/components/Work";
-import Stats from "@/components/Stats";
 import Process from "@/components/Process";
 import Packs from "@/components/Packs";
 import Testimonials from "@/components/Testimonials";
@@ -30,7 +29,6 @@ export default function Page() {
         <About />
         <Services />
         <Work />
-        <Stats />
         <Process />
         <Packs />
         <Testimonials />

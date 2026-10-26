@@ -25,7 +25,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 section{position:relative;padding-block:clamp(88px,12vw,160px)}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:.95;margin:0;text-wrap:balance;font-weight:600}
-h2{font-size:clamp(40px,6.4vw,96px);text-transform:uppercase}
+h2{font-size:clamp(30px,4.3vw,64px);text-transform:uppercase}
 h3{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.02em}
 p{margin:0}
 .eyebrow{font-family:var(--display);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-2);display:inline-flex;align-items:center;gap:12px;font-weight:500}
@@ -124,7 +124,7 @@ p{margin:0}
 .about__img canvas{width:100%;height:100%;display:block}
 .about__badge{position:absolute;right:-8px;bottom:28px;width:124px;height:124px;border-radius:50%;background:var(--grad);display:grid;place-items:center;text-align:center;font-family:var(--display);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#120600;font-weight:700;padding:16px;line-height:1.5;animation:spin 14s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.about__text h2{font-size:clamp(38px,4.6vw,68px)}
+.about__text h2{font-size:clamp(28px,3.4vw,50px)}
 .about__text .lead{margin-block:28px}
 .about__cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-block:36px}
 .about__cols div{border-top:1px solid var(--line);padding-top:16px}
@@ -195,7 +195,7 @@ p{margin:0}
 .detail__hero{aspect-ratio:21/9;max-width:100%;overflow:hidden}
 .detail__hero canvas{width:100%;height:100%;display:block}
 .detail__body{padding-block:clamp(40px,6vw,80px)}
-.detail__body h2{font-size:clamp(36px,6vw,88px);margin-bottom:28px}
+.detail__body h2{font-size:clamp(30px,4.4vw,64px);margin-bottom:28px}
 .detail__cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-block:40px}
 .detail__cols div{border-top:1px solid var(--line);padding-top:18px;min-width:0}
 .detail__cols strong{display:block;font-family:var(--display);letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--orange-2);margin-bottom:12px}
@@ -204,26 +204,6 @@ p{margin:0}
 .detail__gal canvas{width:100%;aspect-ratio:4/3;border-radius:16px}
 .detail__next{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:32px;gap:20px;flex-wrap:wrap}
 @media(max-width:800px){.detail__cols{grid-template-columns:1fr}.detail__gal{grid-template-columns:1fr}}
-
-/* stats — version luxe */
-.stats{background:#050505;color:var(--white);overflow:hidden;--hair:rgba(247,247,245,.13)}
-.stats::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,179,71,.6),transparent)}
-.stats__glow{position:absolute;left:50%;top:62%;width:min(900px,90vw);height:520px;transform:translate(-50%,-50%);background:radial-gradient(closest-side,rgba(255,90,31,.16),transparent);filter:blur(40px);pointer-events:none}
-.stats>.wrap{position:relative}
-.stats__head{display:grid;justify-items:start;text-align:left;gap:26px;margin-bottom:clamp(56px,7vw,100px)}
-.stats h2{font-size:clamp(38px,6vw,92px)}
-.stats .lead{max-width:56ch;text-align:left;color:var(--gray)}
-.stats__grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative}
-.stat{display:flex;flex-direction:column;align-items:center;text-align:center;padding:clamp(44px,5vw,72px) clamp(16px,2vw,32px);border-radius:var(--r);min-width:0;transition:background .6s}
-.stat:hover{background:linear-gradient(180deg,rgba(255,122,0,.07),transparent 70%)}
-.stat b{display:block;margin-top:0;font-family:var(--display);font-weight:600;font-size:clamp(60px,7vw,112px);line-height:.95;letter-spacing:-.05em;font-variant-numeric:lining-nums;background:linear-gradient(180deg,#FFE9C8 0%,#FFB347 48%,#FF7A00 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat b small{font-size:.4em;font-weight:400;vertical-align:top;margin-left:2px;position:relative;top:.18em}
-.stat__orn{display:block;width:56px;height:1px;margin:28px 0 24px;background:linear-gradient(90deg,transparent,var(--amber),transparent);transition:width .6s cubic-bezier(.76,0,.24,1)}
-.stat:hover .stat__orn{width:110px}
-.stat strong{font-family:var(--display);font-weight:500;font-size:12px;letter-spacing:.3em;text-transform:uppercase}
-.stat p{margin-top:14px;max-width:26ch;font-size:14px;line-height:1.7;color:var(--gray)}
-@media(max-width:900px){.stats__grid{grid-template-columns:1fr 1fr}}
-@media(max-width:520px){.stats__grid{grid-template-columns:1fr}}
 
 /* process */
 .process__track{position:relative;margin-top:20px}
@@ -404,7 +384,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 @keyframes mapfill{0%{opacity:0;transform:scale(.97);filter:brightness(2.2)}100%{opacity:1;transform:none;filter:none}}
 @keyframes mapfade{to{opacity:1}}
 @keyframes mapring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(4)}}
-@keyframes mapfloat{50%{transform:translateY(-7px)}}
+@keyframes mapfloat{50%{transform:translateY(-3px)}}
 
 /* témoignages multilingues */
 .quote .lang{margin-inline-start:auto;font-style:normal;font-family:var(--display);font-size:10px;letter-spacing:.16em;color:var(--orange-2);border:1px solid rgba(255,122,0,.4);padding:5px 9px;border-radius:999px;white-space:nowrap}
@@ -457,7 +437,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 @media(prefers-reduced-motion:reduce){.totop svg.totop__arrow,.totop.show::after{animation:none}}
 
 /* contact + devis : une seule section */
-.contact h2{font-size:clamp(46px,8.4vw,132px)}
+.contact h2{font-size:clamp(36px,6vw,92px)}
 .contact__grid{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,96px);align-items:start;margin-top:clamp(44px,6vw,90px)}
 .contact__left{display:grid;gap:clamp(32px,4vw,52px)}
 @media(max-width:900px){.contact__grid{grid-template-columns:1fr}}
@@ -500,10 +480,10 @@ body.has-cursor .sel__btn,body.has-cursor .sel__panel li{cursor:none}
 .testi>.wrap{position:relative}
 
 /* faq : carte du Maroc à côté de la liste, entière, un peu plus bas */
-.faq__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,340px);gap:clamp(32px,5vw,80px);align-items:end}
+.faq__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,560px);gap:clamp(32px,4vw,64px);align-items:end}
 .faq__layout .faq__list{max-width:none}
-.faq .morocco{position:relative;width:100%;max-width:340px;height:auto;justify-self:center;margin-bottom:-10px;pointer-events:none;filter:drop-shadow(0 0 30px rgba(255,90,31,.25))}
-@media(max-width:900px){.faq__layout{grid-template-columns:1fr}.faq .morocco{max-width:280px;margin:24px auto 0}}
+.faq .morocco{position:relative;width:100%;max-width:560px;aspect-ratio:1000/625;height:auto;justify-self:center;margin-bottom:-10px;pointer-events:none;overflow:visible}
+@media(max-width:900px){.faq__layout{grid-template-columns:1fr}.faq .morocco{max-width:100%;margin:24px auto 0}}
 
 /* hero : indicateur de scroll centré en bas */
 .scroll-hint{display:flex;flex-direction:column;align-items:center;gap:12px;width:max-content;margin:clamp(44px,7vw,90px) auto 0;color:var(--gray)}
@@ -520,12 +500,11 @@ body.has-cursor .sel__btn,body.has-cursor .sel__panel li{cursor:none}
 @media(prefers-reduced-motion:reduce){.scroll-hint__mouse i{animation:none;opacity:1}.scroll-hint__chev b{animation:none;opacity:.7}}
 
 /* ---- hover des cartes : halo qui suit la souris ---- */
-.card,.pack,.quote,.proj,.stat{transform-style:flat}
-.card::before,.pack__in::before,.quote::after,.stat::after,.proj::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,122,0,.18),transparent 62%);opacity:0;transition:opacity .45s;pointer-events:none}
-.card:hover::before,.pack:hover .pack__in::before,.quote:hover::after,.stat:hover::after,.proj:hover::after{opacity:1}
+.card,.pack,.quote,.proj{transform-style:flat}
+.card::before,.pack__in::before,.quote::after,.proj::after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,122,0,.18),transparent 62%);opacity:0;transition:opacity .45s;pointer-events:none}
+.card:hover::before,.pack:hover .pack__in::before,.quote:hover::after,.proj:hover::after{opacity:1}
 .card--feature::before{background:radial-gradient(380px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.4),transparent 62%)}
 .pack__in{position:relative}
-.stat{position:relative}
 .proj::after{z-index:2}
 .card:hover,.proj:hover,.quote:hover{border-color:rgba(255,122,0,.5)}
 .card h3,.pack h3{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
@@ -549,3 +528,31 @@ body.has-cursor .sel__btn,body.has-cursor .sel__panel li{cursor:none}
 .skip{position:fixed;left:16px;top:-80px;z-index:200;background:var(--white);color:#000;padding:12px 18px;border-radius:999px;font-family:var(--display);font-weight:600;font-size:14px;transition:top .25s}
 .skip:focus{top:calc(env(safe-area-inset-top,0px) + 12px)}
 main:focus{outline:none}
+
+/* faq : pays autour du Maroc, révélés à la fin du tracé */
+.wd{fill:none;stroke-linecap:round;opacity:0}
+.wd--other{stroke:rgba(247,247,245,.13);stroke-width:5}
+.wd--europe{stroke:#FFB347;stroke-width:5.6}
+.wd--saudi{stroke:#FF7A00;stroke-width:6.6}
+.world__arc{fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.95;filter:drop-shadow(0 0 5px rgba(255,122,0,.9))}
+.world__arc--eu{stroke:#FFB347;stroke-width:1.8}
+.world__arc--sa{stroke:#FF7A00;stroke-width:1.8}
+.world__pen,.world__pins,.world__labels{opacity:0}
+.world__pen{fill:#fff;filter:drop-shadow(0 0 8px #FFB347)}
+.wl{font-family:var(--display);font-size:24px;font-weight:600;letter-spacing:.32em;fill:rgba(247,247,245,.22);text-anchor:middle}
+.wpin{fill:#FFB347;stroke:#050505;stroke-width:2}
+.wtxt{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.2em;fill:var(--white)}
+.wtxt--sm{font-size:12px;fill:rgba(247,247,245,.8)}
+.morocco.out .wd--other{animation:wdfade .9s ease .5s forwards}
+.morocco.out .world__arc--eu{animation:wdarc 1.5s cubic-bezier(.45,0,.25,1) 1.3s forwards}
+.morocco.out .world__arc--sa{animation:wdarc 1.9s cubic-bezier(.45,0,.25,1) 1.7s forwards}
+.morocco.out .wd--europe{animation:wdfade 1s ease 2.6s forwards}
+.morocco.out .wd--saudi{animation:wdfade 1s ease 3.4s forwards}
+.morocco.out .world__labels{animation:wdfade 1s ease 3.3s forwards}
+.morocco.out .world__pins{animation:wdfade .8s ease 1.4s forwards}
+.morocco.out .world__pen{animation:wdfade .4s ease 3s forwards}
+.morocco.instant .wd,.morocco.instant .world__labels,.morocco.instant .world__pins{animation:none;opacity:1}
+.morocco.instant .world__arc{animation:none;stroke-dashoffset:0}
+.morocco.instant .world__pen{display:none}
+@keyframes wdfade{to{opacity:1}}
+@keyframes wdarc{to{stroke-dashoffset:0}}

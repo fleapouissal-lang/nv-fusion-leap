@@ -73,8 +73,8 @@ export default function Motion() {
 
     /* cartes : inclinaison 3D + halo qui suit la souris */
     if (matchMedia("(hover:hover) and (pointer:fine)").matches && !reduce) {
-      $$(".card,.pack,.quote,.proj,.stat").forEach((card) => {
-        const amt = card.matches(".proj") ? 4 : card.matches(".stat") ? 3 : 7;
+      $$(".card,.pack,.quote,.proj").forEach((card) => {
+        const amt = card.matches(".proj") ? 4 : 7;
         const lift = card.matches(".pack") ? -10 : card.matches(".quote") ? 0 : -6;
         const move = (e: MouseEvent) => {
           const r = card.getBoundingClientRect();
@@ -117,7 +117,7 @@ export default function Motion() {
       gsap.to(".hero__glow", { opacity: 0.3, ease: "none", scrollTrigger: hero });
 
       // reveals par lots : les éléments qui entrent ensemble arrivent en cascade
-      gsap.set(".card,.pack,.quote,.proj,.stat", { scale: 0.94 });
+      gsap.set(".card,.pack,.quote,.proj", { scale: 0.94 });
       ScrollTrigger.batch(".reveal", {
         start: "top 90%",
         once: true,
