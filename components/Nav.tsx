@@ -1,0 +1,89 @@
+"use client";
+
+import { useCallback, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { getLenis } from "@/lib/lenis";
+
+const links = [
+  { id: "accueil", label: "Accueil" },
+  { id: "agence", label: "Agence" },
+  { id: "services", label: "Services" },
+  { id: "realisations", label: "Réalisations" },
+  { id: "packs", label: "Packs" },
+  { id: "contact", label: "Contact" },
+];
+
+export default function Nav() {
+  const [shrunk, setShrunk] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("");
+  const progress = useRef<HTMLDivElement>(null);
+
+  const closeMobile = useCallback(() => {
+    setOpen(false);
+    document.body.style.overflow = "";
+    getLenis()?.start();
+  }, []);
+
+  const toggle = () => {
+    if (open) return closeMobile();
+    setOpen(true);
+    document.body.style.overflow = "hidden";
+    getLenis()?.stop();
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setShrunk(y > 60);
+      if (progress.current) {
+        progress.current.style.width = (y / (document.documentElement.scrollHeight - innerHeight)) * 100 + "%";
+      }
+    };
+    onScroll();
+    addEventListener("scroll", onScroll, { passive: true });
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeMobile();
+    document.addEventListener("keydown", onKey);
+    const io = new IntersectionObserver(
+      (es) => es.forEach((en) => en.isIntersecting && setActive(en.target.id)),
+      { rootMargin: "-40% 0px -55% 0px" }
+    );
+    links.forEach((l) => {
+      const el = document.getElementById(l.id);
+      if (el) io.observe(el);
+    });
+    return () => {
+      removeEventListener("scroll", onScroll);
+      document.removeEventListener("keydown", onKey);
+      io.disconnect();
+    };
+  }, [closeMobile]);
+
+  return (
+    <>
+      <div id="progress" ref={progress} aria-hidden="true" />
+      <header className="nav">
+        <div className={`nav__pill${shrunk ? " shrunk" : ""}`} id="pill">
+          <a className="nav__logo" href="#accueil" aria-label="Fusion Leap — accueil">
+            <Image src="/logo.png" alt="Fusion Leap" width={1146} height={228} priority sizes="170px" />
+          </a>
+          <ul className="nav__links">
+            {links.map((l) => (
+              <li key={l.id}>
+                <a href={`#${l.id}`} className={active === l.id ? "active" : undefined}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+          <a className="btn btn--grad btn--sm magnetic" href="#devis">Démarrer un projet <span className="arr">↗</span></a>
+          <button className={`burger${open ? " open" : ""}`} id="burger" aria-label="Menu" aria-expanded={open} onClick={toggle}><i /></button>
+        </div>
+      </header>
+      <nav className={`mobile${open ? " open" : ""}`} id="mobile" aria-hidden={!open} onClick={(e) => (e.target as HTMLElement).closest("a") && closeMobile()}>
+        {links.map((l, i) => (
+          <a key={l.id} href={`#${l.id}`}><small>{String(i + 1).padStart(2, "0")}</small>{l.label}</a>
+        ))}
+        <a className="btn btn--grad" href="#devis">Démarrer un projet <span className="arr">↗</span></a>
+      </nav>
+    </>
+  );
+}
