@@ -1,6 +1,5 @@
 import Loader from "@/components/Loader";
 import Nav from "@/components/Nav";
-import Cursor from "@/components/Cursor";
 import Hero from "@/components/Hero";
 import Marquees from "@/components/Marquees";
 import About from "@/components/About";
@@ -21,7 +20,6 @@ export default function Page() {
     <>
       <a className="skip" href="#main">Aller au contenu</a>
       <div className="grain" aria-hidden="true" />
-      <Cursor />
       <Loader />
       <Nav />
       <main id="main" tabIndex={-1}>

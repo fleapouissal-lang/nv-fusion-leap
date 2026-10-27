@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import Image from "next/image";
+import PartnerGrid, { type PartnerItem } from "./PartnerGrid";
 
 type Partner = { name: string; slug: string; dark?: boolean };
 
@@ -31,39 +31,9 @@ function findLogo(slug: string) {
   return null;
 }
 
-const items = partners.map((p) => ({ ...p, logo: findLogo(p.slug) }));
-// la seconde rangée reprend les mêmes marques dans un autre ordre
-const rowB = [...items.slice(6), ...items.slice(0, 6)];
-
-function Logo({ p }: { p: (typeof items)[number] }) {
-  return (
-    <li className={`plogo${p.dark ? " plogo--dark" : ""}`}>
-      {p.logo ? (
-        <span className="plogo__img">
-          <Image src={p.logo} alt="" fill sizes="190px" unoptimized={p.logo.endsWith(".svg")} />
-        </span>
-      ) : (
-        <span className="plogo__name">{p.name}</span>
-      )}
-    </li>
-  );
-}
-
-function Row({ list, reverse, decorative }: { list: typeof items; reverse?: boolean; decorative?: boolean }) {
-  return (
-    <div className="prow" aria-hidden={decorative || undefined}>
-      <div className={`prow__track${reverse ? " prow__track--rev" : ""}`}>
-        {[0, 1].map((copy) => (
-          <ul className="prow__set" key={copy} aria-hidden={copy === 1 || undefined}>
-            {list.map((p) => <Logo key={p.slug} p={p} />)}
-          </ul>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export default function Partners() {
+  const items: PartnerItem[] = partners.map((p) => ({ ...p, logo: findLogo(p.slug) }));
+
   return (
     <section className="partners" id="partenaires">
       <div className="wrap">
@@ -71,14 +41,11 @@ export default function Partners() {
           <div>
             <span className="eyebrow reveal">Partenaires</span>
             <h2 className="reveal" style={{ marginTop: 22 }}>Des marques qui<br />avancent <span className="grad-text">avec nous.</span></h2>
+            <span className="pstat reveal"><i aria-hidden="true" />{items.length} marques · Maroc · Golfe · Europe</span>
           </div>
           <p className="lead reveal">Hôtels, entreprises et commerces de Marrakech et d&apos;ailleurs nous confient leur image.</p>
         </div>
-      </div>
-
-      <div className="pband reveal" role="group" aria-label={`Clients et partenaires : ${partners.map((p) => p.name).join(", ")}`}>
-        <Row list={items} />
-        <Row list={rowB} reverse decorative />
+        <PartnerGrid items={items} />
       </div>
     </section>
   );

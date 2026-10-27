@@ -62,8 +62,9 @@ export default function Nav() {
   return (
     <>
       <div id="progress" ref={progress} aria-hidden="true" />
-      <header className="nav">
+      <header className={`nav${shrunk ? " nav--shrunk" : ""}`}>
         <div className={`nav__pill${shrunk ? " shrunk" : ""}`} id="pill">
+          <div className="nav__in">
           <a className="nav__logo" href="#accueil" aria-label="Fusion Leap — accueil">
             <Image src="/logo.png" alt="Fusion Leap" width={1146} height={228} priority sizes="170px" />
           </a>
@@ -76,13 +77,29 @@ export default function Nav() {
           </ul>
           <a className="btn btn--grad btn--sm magnetic" href="#devis">Démarrer un projet <span className="arr">↗</span></a>
           <button className={`burger${open ? " open" : ""}`} id="burger" aria-label="Menu" aria-expanded={open} onClick={toggle}><i /></button>
+          </div>
         </div>
       </header>
-      <nav className={`mobile${open ? " open" : ""}`} id="mobile" aria-hidden={!open} onClick={(e) => (e.target as HTMLElement).closest("a") && closeMobile()}>
-        {links.map((l, i) => (
-          <a key={l.id} href={`#${l.id}`}><small>{String(i + 1).padStart(2, "0")}</small>{l.label}</a>
-        ))}
-        <a className="btn btn--grad" href="#devis">Démarrer un projet <span className="arr">↗</span></a>
+      <div className={`mobile__backdrop${open ? " open" : ""}`} onClick={closeMobile} aria-hidden="true" />
+      <nav className={`mobile${open ? " open" : ""}`} id="mobile" aria-hidden={!open} aria-label="Menu" onClick={(e) => (e.target as HTMLElement).closest("a") && closeMobile()}>
+        <span className="mobile__eyebrow">Menu</span>
+        <ul className="mobile__links">
+          {links.map((l, i) => (
+            <li key={l.id} style={{ "--i": i } as React.CSSProperties}>
+              <a href={`#${l.id}`} className={active === l.id ? "active" : undefined}>
+                <small>{String(i + 1).padStart(2, "0")}</small>
+                <span>{l.label}</span>
+                <b aria-hidden="true">↗</b>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a className="btn btn--grad mobile__cta" href="#devis">Démarrer un projet <span className="arr">↗</span></a>
+        <div className="mobile__foot">
+          <a href="tel:+212660678569">+212 660-678569</a>
+          <a href="mailto:contact@fusionleap.ma">contact@fusionleap.ma</a>
+          <span>Marrakech, Maroc</span>
+        </div>
       </nav>
     </>
   );

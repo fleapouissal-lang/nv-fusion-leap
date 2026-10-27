@@ -23,6 +23,8 @@ export default function Work() {
   const firstFilter = useRef(true);
   const p = projects[current];
   const next = projects[(current + 1) % projects.length];
+  const prev = projects[(current - 1 + projects.length) % projects.length];
+  const num = (i: number) => String(i + 1).padStart(2, "0");
 
   const openDetail = (i: number) => {
     setCurrent(i);
@@ -39,9 +41,9 @@ export default function Work() {
     getLenis()?.start();
   }, []);
 
-  const goNext = () => {
+  const goTo = (dir: 1 | -1) => {
     setOpen(false);
-    setTimeout(() => openDetail((current + 1) % projects.length), 500);
+    setTimeout(() => openDetail((current + dir + projects.length) % projects.length), 500);
   };
 
   useEffect(() => {
@@ -97,26 +99,50 @@ export default function Work() {
       </section>
 
       <div className={`detail${open ? " open" : ""}`} id="detail" ref={detailRef} aria-hidden={!open} role="dialog" aria-label="Détail du projet">
-        <button className="detail__close" id="detailClose" ref={closeRef} aria-label="Fermer" onClick={closeDetail}>×</button>
-        <div className="detail__hero"><ArtCanvas id="detailCanvas" width={1280} height={549} seed={p.seed} blobs={5} ribbons={3} active={opened} /></div>
-        <div className="wrap detail__body">
-          <span className="eyebrow" id="dCat">{p.catLabel}</span>
-          <h2 id="dTitle" style={{ marginTop: 20 }}>{p.title}</h2>
-          <p className="lead" id="dOverview">{p.overview}</p>
-          <div className="detail__cols">
-            <div><strong>Le défi</strong><p>{p.challenge}</p></div>
-            <div><strong>L&apos;approche créative</strong><p>{p.approach}</p></div>
-            <div><strong>Services livrés</strong><p>{p.services}</p></div>
-          </div>
-          <div className="detail__gal">
-            <ArtCanvas width={640} height={480} seed={p.seed + 7} blobs={3} ribbons={1} active={opened} />
-            <ArtCanvas width={640} height={480} seed={p.seed + 13} blobs={4} ribbons={2} dark={false} active={opened} />
-          </div>
-          <div className="detail__next">
-            <span className="eyebrow">Projet suivant</span>
-            <button className="btn btn--light" id="dNext" onClick={goNext}>{next.title} <span className="arr">↗</span></button>
+        <div className="detail__bar">
+          <button type="button" className="detail__back" onClick={closeDetail}><span aria-hidden="true">←</span> Réalisations</button>
+          <span className="detail__count"><b>{num(current)}</b> / {num(projects.length - 1)}</span>
+          <button className="detail__close" id="detailClose" ref={closeRef} aria-label="Fermer" onClick={closeDetail}>×</button>
+        </div>
+
+        <div className="detail__hero">
+          <ArtCanvas id="detailCanvas" width={1280} height={720} seed={p.seed} blobs={5} ribbons={3} active={opened} />
+          <div className="detail__title">
+            <div className="wrap">
+              <span className="eyebrow">{p.catLabel}</span>
+              <h2>{p.title}</h2>
+              <div className="detail__meta"><span>{p.catLabel}</span><span>{p.year}</span><span>Projet {num(current)}</span></div>
+            </div>
           </div>
         </div>
+
+        <div className="wrap detail__layout">
+          <aside className="detail__side">
+            <dl>
+              <div><dt>Catégorie</dt><dd>{p.catLabel}</dd></div>
+              <div><dt>Année</dt><dd>{p.year}</dd></div>
+              <div><dt>Services livrés</dt><dd className="detail__chips">{p.services.split(",").map((s) => <span key={s.trim()}>{s.trim()}</span>)}</dd></div>
+            </dl>
+            <a className="btn btn--grad" href="#devis" onClick={closeDetail}>Lancer un projet similaire <span className="arr">↗</span></a>
+          </aside>
+          <div className="detail__main">
+            <p className="detail__lead">{p.overview}</p>
+            <div className="detail__blocks">
+              <div className="detail__block"><b>01</b><div><strong>Le défi</strong><p>{p.challenge}</p></div></div>
+              <div className="detail__block"><b>02</b><div><strong>L&apos;approche créative</strong><p>{p.approach}</p></div></div>
+            </div>
+            <div className="detail__gal">
+              <ArtCanvas width={640} height={480} seed={p.seed + 7} blobs={3} ribbons={1} active={opened} />
+              <ArtCanvas width={640} height={480} seed={p.seed + 13} blobs={4} ribbons={2} dark={false} active={opened} />
+              <ArtCanvas width={1280} height={560} seed={p.seed + 21} blobs={5} ribbons={2} active={opened} />
+            </div>
+          </div>
+        </div>
+
+        <nav className="detail__nav" aria-label="Navigation entre projets">
+          <button type="button" onClick={() => goTo(-1)}><small>← Projet précédent</small><strong>{prev.title}</strong></button>
+          <button type="button" onClick={() => goTo(1)}><small>Projet suivant →</small><strong>{next.title}</strong></button>
+        </nav>
       </div>
     </>
   );

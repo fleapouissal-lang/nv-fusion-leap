@@ -2,7 +2,13 @@ import Globe from "./Globe";
 export default function Hero() {
   return (
     <section className="hero" id="accueil">
-      <div className="hero__glow" aria-hidden="true"><i /><i /></div>
+      <div className="hero__glow" aria-hidden="true">
+        <i /><i />
+        <span className="hero__spot" />
+        <span className="hero__beam hero__beam--1" />
+        <span className="hero__beam hero__beam--2" />
+        <span className="hero__beam hero__beam--3" />
+      </div>
       <div className="wrap">
         <div className="hero__grid">
           <div className="hero__text">
@@ -20,9 +26,6 @@ export default function Hero() {
           </div>
           <div className="hero__visual" id="heroVisual">
             <Globe />
-            <span className="tag tag--1"><i />Branding</span>
-            <span className="tag tag--2"><i />Expériences digitales</span>
-            <span className="tag tag--3"><i />Est. Marrakech</span>
           </div>
         </div>
         <a className="scroll-hint" href="#agence" aria-label="Défiler vers la suite">

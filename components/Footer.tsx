@@ -6,6 +6,7 @@ const socials = [
 ];
 
 import ContactIcon from "./ContactIcon";
+import FooterPanel from "./FooterPanel";
 
 export default function Footer() {
   return (
@@ -20,9 +21,9 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div><h4>Navigation</h4><ul><li><a href="#accueil">Accueil</a></li><li><a href="#agence">Agence</a></li><li><a href="#services">Services</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#packs">Packs</a></li><li><a href="#contact">Contact</a></li></ul></div>
-          <div><h4>Services</h4><ul><li><a href="#services">Branding</a></li><li><a href="#services">Sites web</a></li><li><a href="#services">Social media</a></li><li><a href="#services">Ads &amp; performance</a></li><li><a href="#services">Photo &amp; vidéo</a></li><li><a href="#services">Stratégie</a></li></ul></div>
-          <div><h4>Contact</h4><ul><li className="footer__c"><ContactIcon name="mail" />contact@fusionleap.ma</li><li className="footer__c"><ContactIcon name="phone" /><a href="tel:+212660678569">+212 660-678569</a></li><li className="footer__c"><ContactIcon name="pin" /><a href="https://www.google.com/maps/search/?api=1&query=Espace%20El%20Mostapha%2C%20N%C2%B0%204%2C%20Lamhita%2C%20Semlalia%2C%20Gu%C3%A9liz%2C%20Marrakech" target="_blank" rel="noopener noreferrer">Espace El Mostapha, N° 4, Lamhita, Semlalia, Guéliz, Marrakech</a></li></ul></div>
+          <FooterPanel title="Navigation"><ul><li><a href="#accueil">Accueil</a></li><li><a href="#agence">Agence</a></li><li><a href="#services">Services</a></li><li><a href="#realisations">Réalisations</a></li><li><a href="#packs">Packs</a></li><li><a href="#contact">Contact</a></li></ul></FooterPanel>
+          <FooterPanel title="Services"><ul><li><a href="#services">Branding</a></li><li><a href="#services">Sites web</a></li><li><a href="#services">Social media</a></li><li><a href="#services">Ads &amp; performance</a></li><li><a href="#services">Photo &amp; vidéo</a></li><li><a href="#services">Stratégie</a></li></ul></FooterPanel>
+          <FooterPanel title="Contact"><ul><li className="footer__c"><ContactIcon name="mail" />contact@fusionleap.ma</li><li className="footer__c"><ContactIcon name="phone" /><a href="tel:+212660678569">+212 660-678569</a></li><li className="footer__c"><ContactIcon name="pin" /><a href="https://www.google.com/maps/search/?api=1&query=Espace%20El%20Mostapha%2C%20N%C2%B0%204%2C%20Lamhita%2C%20Semlalia%2C%20Gu%C3%A9liz%2C%20Marrakech" target="_blank" rel="noopener noreferrer">Espace El Mostapha, N° 4, Lamhita, Semlalia, Guéliz, Marrakech</a></li></ul></FooterPanel>
         </div>
         <div className="footer__bot">
           <span>© {new Date().getFullYear()} Fusion Leap SARL AU — Tous droits réservés.</span>
