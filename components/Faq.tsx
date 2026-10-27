@@ -2,7 +2,6 @@
 
 import { useRef, useState } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import MoroccoMap from "./MoroccoMap";
 import { faqItems } from "@/lib/faq";
 
 const items = faqItems;
@@ -32,12 +31,9 @@ export default function Faq() {
           <span className="eyebrow reveal">FAQ</span>
           <h2 className="reveal">Vous avez des questions ?<br />Nous avons <span className="grad-text">des réponses.</span></h2>
         </div>
-        <div className="faq__layout">
-          <div className="faq__list" id="faqList">
+        <div className="faq__list" id="faqList">
             {items.map((it) => <Item key={it.q} {...it} />)}
           </div>
-          <MoroccoMap />
-        </div>
       </div>
     </section>
   );

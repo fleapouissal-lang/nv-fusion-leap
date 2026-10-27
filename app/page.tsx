@@ -8,6 +8,7 @@ import Services from "@/components/Services";
 import Work from "@/components/Work";
 import Process from "@/components/Process";
 import Packs from "@/components/Packs";
+import Partners from "@/components/Partners";
 import Testimonials from "@/components/Testimonials";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
@@ -31,6 +32,7 @@ export default function Page() {
         <Work />
         <Process />
         <Packs />
+        <Partners />
         <Testimonials />
         <Faq />
         <Contact />

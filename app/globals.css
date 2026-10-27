@@ -25,7 +25,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
 section{position:relative;padding-block:clamp(88px,12vw,160px)}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:.95;margin:0;text-wrap:balance;font-weight:600}
-h2{font-size:clamp(30px,4.3vw,64px);text-transform:uppercase}
+h2{font-size:clamp(26px,3.1vw,46px);text-transform:uppercase}
 h3{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.02em}
 p{margin:0}
 .eyebrow{font-family:var(--display);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-2);display:inline-flex;align-items:center;gap:12px;font-weight:500}
@@ -89,7 +89,8 @@ p{margin:0}
 .mobile .btn{margin-top:32px;justify-self:start}
 
 /* hero */
-.hero{min-height:auto;padding-block:clamp(150px,18vw,220px) clamp(60px,8vw,110px);overflow:hidden}
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding-block:clamp(104px,11vw,140px) clamp(28px,4vw,48px);overflow:hidden}
+.hero>.wrap{width:100%}
 .hero__glow{position:absolute;inset:0;pointer-events:none}
 .hero__glow i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.55}
 .hero__glow i:nth-child(1){width:52vw;height:52vw;right:-14vw;top:-8vw;background:radial-gradient(circle,rgba(255,90,31,.55),transparent 65%)}
@@ -111,7 +112,7 @@ p{margin:0}
 /* marquee */
 .marquee{padding-block:0;border-block:1px solid var(--line);overflow:hidden}
 .marquee__track{display:flex;gap:0;white-space:nowrap;width:max-content;will-change:transform}
-.marquee__track span{font-family:var(--display);font-size:clamp(44px,8vw,120px);font-weight:700;letter-spacing:-.03em;text-transform:uppercase;padding:18px 28px 14px 0;color:transparent;-webkit-text-stroke:1px rgba(247,247,245,.35);line-height:1}
+.marquee__track span{font-family:var(--display);font-size:clamp(22px,3.4vw,50px);font-weight:700;letter-spacing:-.03em;text-transform:uppercase;padding:14px 22px 10px 0;color:transparent;-webkit-text-stroke:1px rgba(247,247,245,.35);line-height:1}
 .marquee__track span.solid{color:var(--orange-2);-webkit-text-stroke:0}
 .marquee__track span.star{color:var(--orange-2);-webkit-text-stroke:0;font-weight:400}
 .marquee--logos{border-top:0;padding-block:22px}
@@ -124,7 +125,7 @@ p{margin:0}
 .about__img canvas{width:100%;height:100%;display:block}
 .about__badge{position:absolute;right:-8px;bottom:28px;width:124px;height:124px;border-radius:50%;background:var(--grad);display:grid;place-items:center;text-align:center;font-family:var(--display);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#120600;font-weight:700;padding:16px;line-height:1.5;animation:spin 14s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-.about__text h2{font-size:clamp(28px,3.4vw,50px)}
+.about__text h2{font-size:clamp(24px,2.7vw,40px)}
 .about__text .lead{margin-block:28px}
 .about__cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-block:36px}
 .about__cols div{border-top:1px solid var(--line);padding-top:16px}
@@ -195,7 +196,7 @@ p{margin:0}
 .detail__hero{aspect-ratio:21/9;max-width:100%;overflow:hidden}
 .detail__hero canvas{width:100%;height:100%;display:block}
 .detail__body{padding-block:clamp(40px,6vw,80px)}
-.detail__body h2{font-size:clamp(30px,4.4vw,64px);margin-bottom:28px}
+.detail__body h2{font-size:clamp(26px,3.4vw,50px);margin-bottom:28px}
 .detail__cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:32px;margin-block:40px}
 .detail__cols div{border-top:1px solid var(--line);padding-top:18px;min-width:0}
 .detail__cols strong{display:block;font-family:var(--display);letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--orange-2);margin-bottom:12px}
@@ -366,25 +367,6 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 .faq{overflow:hidden}
 .faq>.wrap{position:relative;z-index:1}
 
-.morocco__line{stroke-dasharray:1;stroke-dashoffset:1;stroke:#FFD9A0;transition:stroke .7s ease}
-.morocco__line.cool{stroke:#FF7A00}
-.morocco__region,.morocco__pin{opacity:0}
-.morocco__glow{filter:drop-shadow(0 0 5px rgba(255,122,0,.95))}
-.morocco__cursor{filter:drop-shadow(0 0 6px rgba(255,179,71,.9))}
-.morocco__region{transform-box:fill-box;transform-origin:center}
-.morocco__ring{transform-box:fill-box;transform-origin:center;opacity:0}
-.morocco.drawn .morocco__region{animation:mapfill 1.2s cubic-bezier(.2,.7,.2,1) calc(var(--i)*.45s + .5s) forwards}
-.morocco.drawn .morocco__pin{animation:mapfade 1s ease 6s forwards}
-.morocco.drawn .morocco__ring{animation:mapring 2.6s ease-out 6.2s infinite}
-.morocco.drawn .morocco__ring--2{animation-delay:7.5s}
-.morocco.drawn .morocco__float{animation:mapfloat 9s ease-in-out 7s infinite}
-.morocco.instant .morocco__line{stroke-dashoffset:0;stroke:#FF7A00}
-.morocco.instant .morocco__region,.morocco.instant .morocco__pin{animation:none;opacity:1}
-.morocco.instant .morocco__ring,.morocco.instant .morocco__float{animation:none}
-@keyframes mapfill{0%{opacity:0;transform:scale(.97);filter:brightness(2.2)}100%{opacity:1;transform:none;filter:none}}
-@keyframes mapfade{to{opacity:1}}
-@keyframes mapring{0%{opacity:.8;transform:scale(1)}100%{opacity:0;transform:scale(4)}}
-@keyframes mapfloat{50%{transform:translateY(-3px)}}
 
 /* témoignages multilingues */
 .quote .lang{margin-inline-start:auto;font-style:normal;font-family:var(--display);font-size:10px;letter-spacing:.16em;color:var(--orange-2);border:1px solid rgba(255,122,0,.4);padding:5px 9px;border-radius:999px;white-space:nowrap}
@@ -437,7 +419,7 @@ html::-webkit-scrollbar,body::-webkit-scrollbar{display:none;width:0;height:0}
 @media(prefers-reduced-motion:reduce){.totop svg.totop__arrow,.totop.show::after{animation:none}}
 
 /* contact + devis : une seule section */
-.contact h2{font-size:clamp(36px,6vw,92px)}
+.contact h2{font-size:clamp(30px,4.6vw,68px)}
 .contact__grid{position:relative;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(40px,6vw,96px);align-items:start;margin-top:clamp(44px,6vw,90px)}
 .contact__left{display:grid;gap:clamp(32px,4vw,52px)}
 @media(max-width:900px){.contact__grid{grid-template-columns:1fr}}
@@ -480,13 +462,9 @@ body.has-cursor .sel__btn,body.has-cursor .sel__panel li{cursor:none}
 .testi>.wrap{position:relative}
 
 /* faq : carte du Maroc à côté de la liste, entière, un peu plus bas */
-.faq__layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,560px);gap:clamp(32px,4vw,64px);align-items:end}
-.faq__layout .faq__list{max-width:none}
-.faq .morocco{position:relative;width:100%;max-width:560px;aspect-ratio:1000/625;height:auto;justify-self:center;margin-bottom:-10px;pointer-events:none;overflow:visible}
-@media(max-width:900px){.faq__layout{grid-template-columns:1fr}.faq .morocco{max-width:100%;margin:24px auto 0}}
 
 /* hero : indicateur de scroll centré en bas */
-.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:12px;width:max-content;margin:clamp(44px,7vw,90px) auto 0;color:var(--gray)}
+.scroll-hint{display:flex;flex-direction:column;align-items:center;gap:12px;width:max-content;margin:clamp(24px,3.5vw,44px) auto 0;color:var(--gray)}
 .scroll-hint__mouse{position:relative;width:28px;height:46px;border-radius:16px;border:1.5px solid rgba(247,247,245,.4);display:block;transition:border-color .3s,box-shadow .3s}
 .scroll-hint__mouse i{position:absolute;left:50%;top:8px;width:4px;height:9px;margin-left:-2px;border-radius:4px;background:var(--grad);animation:wheel 1.9s cubic-bezier(.76,0,.24,1) infinite}
 .scroll-hint__txt{font-family:var(--display);font-size:11px;letter-spacing:.42em;text-transform:uppercase;padding-left:.42em}
@@ -529,30 +507,27 @@ body.has-cursor .sel__btn,body.has-cursor .sel__panel li{cursor:none}
 .skip:focus{top:calc(env(safe-area-inset-top,0px) + 12px)}
 main:focus{outline:none}
 
-/* faq : pays autour du Maroc, révélés à la fin du tracé */
-.wd{fill:none;stroke-linecap:round;opacity:0}
-.wd--other{stroke:rgba(247,247,245,.13);stroke-width:5}
-.wd--europe{stroke:#FFB347;stroke-width:5.6}
-.wd--saudi{stroke:#FF7A00;stroke-width:6.6}
-.world__arc{fill:none;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:.95;filter:drop-shadow(0 0 5px rgba(255,122,0,.9))}
-.world__arc--eu{stroke:#FFB347;stroke-width:1.8}
-.world__arc--sa{stroke:#FF7A00;stroke-width:1.8}
-.world__pen,.world__pins,.world__labels{opacity:0}
-.world__pen{fill:#fff;filter:drop-shadow(0 0 8px #FFB347)}
-.wl{font-family:var(--display);font-size:24px;font-weight:600;letter-spacing:.32em;fill:rgba(247,247,245,.22);text-anchor:middle}
-.wpin{fill:#FFB347;stroke:#050505;stroke-width:2}
-.wtxt{font-family:var(--display);font-size:13px;font-weight:600;letter-spacing:.2em;fill:var(--white)}
-.wtxt--sm{font-size:12px;fill:rgba(247,247,245,.8)}
-.morocco.out .wd--other{animation:wdfade .9s ease .5s forwards}
-.morocco.out .world__arc--eu{animation:wdarc 1.5s cubic-bezier(.45,0,.25,1) 1.3s forwards}
-.morocco.out .world__arc--sa{animation:wdarc 1.9s cubic-bezier(.45,0,.25,1) 1.7s forwards}
-.morocco.out .wd--europe{animation:wdfade 1s ease 2.6s forwards}
-.morocco.out .wd--saudi{animation:wdfade 1s ease 3.4s forwards}
-.morocco.out .world__labels{animation:wdfade 1s ease 3.3s forwards}
-.morocco.out .world__pins{animation:wdfade .8s ease 1.4s forwards}
-.morocco.out .world__pen{animation:wdfade .4s ease 3s forwards}
-.morocco.instant .wd,.morocco.instant .world__labels,.morocco.instant .world__pins{animation:none;opacity:1}
-.morocco.instant .world__arc{animation:none;stroke-dashoffset:0}
-.morocco.instant .world__pen{display:none}
-@keyframes wdfade{to{opacity:1}}
-@keyframes wdarc{to{stroke-dashoffset:0}}
+
+/* section agence : photo (parallaxe au scroll sans bords vides) */
+.about__photo{position:absolute;inset:-8% 0;will-change:transform}
+.about__photo img{object-fit:cover;object-position:center}
+
+
+/* partenaires : section claire, logos à leurs couleurs d origine, sans aucun effet, deux rangées en sens inverse */
+.partners{overflow:hidden}
+.pband{display:grid;gap:clamp(18px,2.4vw,34px);margin-top:clamp(8px,2vw,24px);padding-block:clamp(26px,3vw,44px);border-block:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
+.prow__track{display:flex;width:max-content;animation:prow 70s linear infinite}
+.prow__track--rev{animation-direction:reverse}
+.prow__set{display:flex;flex:none;align-items:center;list-style:none;margin:0;padding:0}
+.plogo{flex:none;display:grid;place-items:center;width:clamp(150px,15vw,210px);height:clamp(72px,7vw,98px);margin-right:clamp(14px,1.8vw,26px);padding:clamp(10px,1.1vw,16px) clamp(14px,1.5vw,22px);border-radius:16px;background:#F4F2EE}
+.plogo__img{position:relative;display:block;width:100%;height:100%}
+.plogo__img img{object-fit:contain}
+.plogo--dark{background:#0f0f0f;box-shadow:inset 0 0 0 1px rgba(247,247,245,.22)}
+.plogo--dark .plogo__img{width:100%;height:100%}
+.plogo__name{font-family:var(--display);font-weight:600;font-size:clamp(12px,1.1vw,15px);letter-spacing:.16em;text-transform:uppercase;text-align:center;line-height:1.35;color:#3a3a38}
+@keyframes prow{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.prow__track{animation:none}.pband{overflow-x:auto}}
+
+/* hero : libellé du pays affiché sous le globe */
+.globe__label{position:absolute;left:0;right:0;bottom:1%;text-align:center;font-family:var(--display);font-size:12px;font-weight:600;letter-spacing:.42em;padding-left:.42em;color:rgba(247,247,245,.8);opacity:0;pointer-events:none}
+.hero__visual{width:min(100%,calc((100svh - 230px) / 1.1));justify-self:center}

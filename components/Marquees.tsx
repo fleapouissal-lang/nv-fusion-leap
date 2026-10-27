@@ -17,14 +17,6 @@ export default function Marquees() {
           )}
         </div>
       </div>
-      <div className="marquee marquee--logos" aria-label="Clients et partenaires">
-        <div className="marquee__track" id="mq2">
-          {[0, 1].map((k) =>
-            Array.from({ length: 8 }, (_, i) => <span key={`${k}-${i}`}>Client {String(i + 1).padStart(2, "0")}</span>)
-          )}
-        </div>
-        <p className="note">Logos clients — emplacements réservés en attente des assets officiels</p>
-      </div>
     </>
   );
 }

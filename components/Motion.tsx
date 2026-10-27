@@ -128,7 +128,7 @@ export default function Motion() {
       $$(".about__img,.proj__media").forEach((el) => {
         gsap.to(el, { clipPath: "inset(0 0 0% 0)", duration: 1.3, ease: "expo.out", scrollTrigger: { trigger: el, start: "top 85%", once: true } });
       });
-      gsap.to("#aboutCanvas", { yPercent: 12, ease: "none", scrollTrigger: { trigger: "#aboutImg", start: "top bottom", end: "bottom top", scrub: true } });
+      gsap.to("#aboutCanvas", { yPercent: 6, ease: "none", scrollTrigger: { trigger: "#aboutImg", start: "top bottom", end: "bottom top", scrub: true } });
 
       // line reveals
       ["#statement", "#contactH"].forEach((t) => {
@@ -136,10 +136,7 @@ export default function Motion() {
       });
 
       // marquees
-      const mq = [
-        gsap.to("#mq1", { xPercent: -50, duration: 40, ease: "none", repeat: -1 }),
-        gsap.to("#mq2", { xPercent: -50, duration: 28, ease: "none", repeat: -1 }),
-      ];
+      const mq = [gsap.to("#mq1", { xPercent: -50, duration: 40, ease: "none", repeat: -1 })];
       // plus on scrolle vite, plus les bandeaux accélèrent (et ils repartent dans le sens du scroll)
       ScrollTrigger.create({
         onUpdate: (self) => {

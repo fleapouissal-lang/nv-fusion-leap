@@ -1,4 +1,4 @@
-import ArtCanvas from "./ArtCanvas";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -6,7 +6,15 @@ export default function About() {
       <div className="wrap">
         <div className="about__grid">
           <div className="about__img" id="aboutImg">
-            <ArtCanvas id="aboutCanvas" width={640} height={800} seed={42} blobs={4} ribbons={2} role="img" label="Composition visuelle abstraite évoquant le studio" />
+            <div className="about__photo" id="aboutCanvas">
+              <Image
+                src="/agence.jpg"
+                alt="Touche de clavier orange lumineuse portant le logo Fusion Leap, entourée de touches « create your edge »"
+                fill
+                sizes="(max-width: 900px) 90vw, 560px"
+                quality={85}
+              />
+            </div>
             <div className="about__badge" aria-hidden="true">Creative · Studio · Marrakech ·</div>
           </div>
           <div className="about__text">
