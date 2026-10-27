@@ -1,4 +1,4 @@
-import Globe from "./Globe";
+import GlobeLoader from "./GlobeLoader";
 export default function Hero() {
   return (
     <section className="hero" id="accueil">
@@ -25,7 +25,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="hero__visual" id="heroVisual">
-            <Globe />
+            <GlobeLoader />
           </div>
         </div>
         <a className="scroll-hint" href="#agence" aria-label="Défiler vers la suite">

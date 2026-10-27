@@ -17,7 +17,7 @@ export default function Footer() {
           <div><h4>Agence</h4><p>Agence de communication créative à Marrakech. Branding, digital, contenus et campagnes pour des marques qui marquent.</p>
             <div className="footer__social">
               {socials.map((x) => (
-                <a key={x.name} href="#" aria-label={x.name}><svg viewBox="0 0 24 24" aria-hidden="true">{x.icon}</svg></a>
+                <span key={x.name} className="sbtn" role="img" aria-label={x.name}><svg viewBox="0 0 24 24" aria-hidden="true">{x.icon}</svg></span>
               ))}
             </div>
           </div>
@@ -27,7 +27,7 @@ export default function Footer() {
         </div>
         <div className="footer__bot">
           <span>© {new Date().getFullYear()} Fusion Leap SARL AU — Tous droits réservés.</span>
-          <nav><a href="#">Mentions légales</a><a href="#">Confidentialité</a></nav>
+          <nav><span>Mentions légales</span><span>Confidentialité</span></nav>
         </div>
       </div>
     </footer>

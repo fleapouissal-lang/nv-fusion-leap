@@ -46,6 +46,7 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
+  appleWebApp: { capable: true, title: "Fusion Leap", statusBarStyle: "black-translucent" },
   formatDetection: { telephone: true, email: true, address: true },
   category: "business",
 };

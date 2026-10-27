@@ -100,7 +100,7 @@ export default function Motion() {
         return;
       }
       const loader = document.querySelector("#loader")!;
-      gsap.timeline({ defaults: { ease: "power4.out" } })
+      const intro = gsap.timeline({ defaults: { ease: "power4.out" } })
         .to(loader.querySelector(".bar"), { width: "100%", duration: 0.9, ease: "power2.inOut" })
         .to(loader.querySelector(".mark"), { opacity: 1, scale: 1, duration: 0.6 }, "-=.5")
         .to(loader, { yPercent: -100, duration: 0.9, ease: "power4.inOut", delay: 0.15 })
@@ -109,6 +109,7 @@ export default function Motion() {
         .to("#heroVisual", { opacity: 1, scale: 1, rotate: 0, duration: 1.4, ease: "expo.out" }, "-=.9")
         .to(".hero .lead", { opacity: 1, y: 0, duration: 0.8 }, "-=.9")
         .to(".hero__ctas .btn", { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 }, "-=.6");
+      if (matchMedia("(max-width: 980px)").matches) intro.timeScale(2);
 
       // fond vivant : les halos glissent avec le scroll (parallaxe douce sur toute la page)
       $$(".bgfx__layer").forEach((l) => {
