@@ -110,6 +110,11 @@ export default function Motion() {
         .to(".hero .lead", { opacity: 1, y: 0, duration: 0.8 }, "-=.9")
         .to(".hero__ctas .btn", { opacity: 1, y: 0, duration: 0.6, stagger: 0.12 }, "-=.6");
 
+      // fond vivant : les halos glissent avec le scroll (parallaxe douce sur toute la page)
+      $$(".bgfx__layer").forEach((l) => {
+        gsap.to(l, { yPercent: +(l.dataset.speed || 0), ease: "none", scrollTrigger: { trigger: document.documentElement, start: "top top", end: "bottom bottom", scrub: 1.2 } });
+      });
+
       // hero parallax
       const hero = { trigger: ".hero", start: "top top", end: "bottom top", scrub: true };
       gsap.to("#h1", { yPercent: 18, ease: "none", scrollTrigger: hero });

@@ -23,7 +23,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--orange-2);outline-offset:3px;border-radius:4px}
 ::selection{background:var(--orange);color:#000}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
-section{position:relative;padding-block:clamp(88px,12vw,160px)}
+section{position:relative;padding-block:clamp(56px,7vw,100px)}
 h1,h2,h3{font-family:var(--display);letter-spacing:-.035em;line-height:.95;margin:0;text-wrap:balance;font-weight:600}
 h2{font-size:clamp(26px,3.1vw,46px);text-transform:uppercase}
 h3{font-size:clamp(22px,2.4vw,32px);letter-spacing:-.02em}
@@ -32,7 +32,7 @@ p{margin:0}
 .eyebrow::before{content:"";width:28px;height:1px;background:var(--orange-2)}
 .lead{color:var(--gray);font-size:clamp(16px,1.25vw,19px);max-width:62ch}
 .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{display:grid;gap:24px;margin-bottom:clamp(44px,6vw,80px)}
+.sub{display:grid;gap:24px;margin-bottom:clamp(32px,4vw,56px)}
 .sub.row{grid-template-columns:1fr auto;align-items:end}
 @media(max-width:860px){.sub.row{grid-template-columns:1fr}}
 
@@ -346,7 +346,7 @@ p{margin:0}
 .faq__a p{color:var(--gray);padding-bottom:28px;max-width:90ch;font-size:15px}
 
 /* contact */
-.contact{overflow:hidden;padding-block:clamp(100px,14vw,200px)}
+.contact{overflow:hidden;padding-block:clamp(64px,8vw,110px)}
 .contact__glow{position:absolute;inset:0;background:radial-gradient(60% 50% at 70% 60%,rgba(255,90,31,.28),transparent 70%);pointer-events:none;animation:breathe2 9s ease-in-out infinite}
 @keyframes breathe2{50%{opacity:.6;transform:scale(1.08)}}
 .contact h2{font-size:clamp(52px,10.5vw,170px);line-height:.88;font-weight:700}
@@ -636,3 +636,21 @@ main:focus{outline:none}
   .fpanel__inner ul{padding:2px 16px 16px}
   .fpanel__inner li{padding:4px 0}
 }
+
+/* ---- fond vivant commun à toute la page ---- */
+.bgfx{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:var(--obsidian)}
+.bgfx__layer{position:absolute;inset:0;will-change:transform}
+.bgfx__blob{position:absolute;border-radius:50%;will-change:transform}
+.bgfx__blob--1{width:70vmax;height:70vmax;left:-22vmax;top:-26vmax;background:radial-gradient(circle,rgba(255,90,31,.3),rgba(255,90,31,.09) 40%,transparent 68%);animation:bgDrift1 38s ease-in-out infinite alternate}
+.bgfx__blob--2{width:62vmax;height:62vmax;right:-26vmax;top:8vh;background:radial-gradient(circle,rgba(255,179,71,.2),rgba(255,122,0,.06) 45%,transparent 68%);animation:bgDrift2 46s ease-in-out infinite alternate}
+.bgfx__blob--3{width:58vmax;height:58vmax;left:14vw;bottom:-32vmax;background:radial-gradient(circle,rgba(255,61,0,.22),transparent 66%);animation:bgDrift3 52s ease-in-out infinite alternate}
+.bgfx__sheen{position:absolute;inset:-40%;background:linear-gradient(115deg,transparent 42%,rgba(255,205,150,.06) 50%,transparent 58%);animation:bgSheen 44s ease-in-out infinite alternate}
+.bgfx__dots b{position:absolute;border-radius:50%;background:#FFD9A0;opacity:0;box-shadow:0 0 8px rgba(255,179,71,.8);animation:bgTwinkle 7.5s ease-in-out infinite}
+.bgfx__vignette{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.6))}
+@keyframes bgDrift1{to{transform:translate(12vw,10vh) scale(1.15)}}
+@keyframes bgDrift2{to{transform:translate(-10vw,14vh) scale(1.1)}}
+@keyframes bgDrift3{to{transform:translate(8vw,-12vh) scale(1.2)}}
+@keyframes bgSheen{from{transform:translateX(-22%)}to{transform:translateX(22%)}}
+@keyframes bgTwinkle{0%,100%{opacity:0;transform:translateY(0)}50%{opacity:.8;transform:translateY(-16px)}}
+/* le fond doit rester visible derrière le footer */
+.footer-wrap,.footer{background:transparent}

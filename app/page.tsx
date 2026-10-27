@@ -1,3 +1,4 @@
+import Backdrop from "@/components/Backdrop";
 import Loader from "@/components/Loader";
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
@@ -19,6 +20,7 @@ export default function Page() {
   return (
     <>
       <a className="skip" href="#main">Aller au contenu</a>
+      <Backdrop />
       <div className="grain" aria-hidden="true" />
       <Loader />
       <Nav />
