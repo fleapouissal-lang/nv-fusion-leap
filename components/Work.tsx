@@ -3,14 +3,14 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import ArtCanvas from "./ArtCanvas";
+import Image from "next/image";
 import { filters, projects } from "@/lib/projects";
 import { getLenis } from "@/lib/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const dims = (cls: string) =>
-  cls === "p6" ? { w: 1200, h: 514 } : cls === "p2" ? { w: 720, h: 900 } : cls === "p1" ? { w: 800, h: 600 } : { w: 640, h: 640 };
+const sizes = (cls: string) =>
+  cls === "p6" ? "(max-width: 900px) 100vw, 1280px" : cls === "p1" ? "(max-width: 900px) 100vw, 60vw" : cls === "p2" ? "(max-width: 900px) 100vw, 44vw" : "(max-width: 900px) 100vw, 36vw";
 
 export default function Work() {
   const [filter, setFilter] = useState("all");
@@ -80,12 +80,11 @@ export default function Work() {
           </div>
           <div className="work__grid" id="workGrid" ref={gridRef}>
             {projects.map((pr, i) => {
-              const { w, h } = dims(pr.cls);
               const show = filter === "all" || pr.cat === filter;
               return (
                 <button key={pr.id} type="button" className={`proj ${pr.cls} reveal${show ? "" : " hide"}`} data-cat={pr.cat} onClick={() => openDetail(i)}>
                   <div className="proj__media">
-                    <ArtCanvas width={w} height={h} seed={pr.seed} blobs={4 + (i % 3)} ribbons={2 + (i % 2)} />
+                    <Image src={pr.image} alt={pr.alt} fill sizes={sizes(pr.cls)} quality={85} />
                     <span className="proj__idx">0{i + 1}</span>
                     <span className="proj__cat">{pr.catLabel}</span>
                   </div>
@@ -94,11 +93,10 @@ export default function Work() {
               );
             })}
           </div>
-          <p className="work__note">Projets de démonstration — remplacés par vos études de cas réelles dès réception des assets.</p>
         </div>
       </section>
 
-      <div className={`detail${open ? " open" : ""}`} id="detail" ref={detailRef} aria-hidden={!open} role="dialog" aria-label="Détail du projet">
+      <div className={`detail${open ? " open" : ""}`} id="detail" ref={detailRef} data-lenis-prevent aria-hidden={!open} role="dialog" aria-label="Détail du projet">
         <div className="detail__bar">
           <button type="button" className="detail__back" onClick={closeDetail}><span aria-hidden="true">←</span> Réalisations</button>
           <span className="detail__count"><b>{num(current)}</b> / {num(projects.length - 1)}</span>
@@ -106,7 +104,7 @@ export default function Work() {
         </div>
 
         <div className="detail__hero">
-          <ArtCanvas id="detailCanvas" width={1280} height={720} seed={p.seed} blobs={5} ribbons={3} active={opened} />
+          {opened && <Image key={p.id} src={p.image} alt={p.alt} fill sizes="100vw" quality={85} priority />}
           <div className="detail__title">
             <div className="wrap">
               <span className="eyebrow">{p.catLabel}</span>
@@ -131,11 +129,10 @@ export default function Work() {
               <div className="detail__block"><b>01</b><div><strong>Le défi</strong><p>{p.challenge}</p></div></div>
               <div className="detail__block"><b>02</b><div><strong>L&apos;approche créative</strong><p>{p.approach}</p></div></div>
             </div>
-            <div className="detail__gal">
-              <ArtCanvas width={640} height={480} seed={p.seed + 7} blobs={3} ribbons={1} active={opened} />
-              <ArtCanvas width={640} height={480} seed={p.seed + 13} blobs={4} ribbons={2} dark={false} active={opened} />
-              <ArtCanvas width={1280} height={560} seed={p.seed + 21} blobs={5} ribbons={2} active={opened} />
-            </div>
+            <figure className="detail__gal">
+              {opened && <Image key={p.id} src={p.image} alt={p.alt} width={p.width} height={p.height} sizes="(max-width: 900px) 100vw, 60vw" quality={90} />}
+              <figcaption>Aperçu complet du projet</figcaption>
+            </figure>
           </div>
         </div>
 
